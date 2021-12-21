@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Document
+{% endblock %}
+
+{% block main %}
+<div class="section">
+    <ul class="notice">
+        <li>If nothing changes for the selected goal/objective, please copy and paste the original content in the input box</li>
+        <li>If the selected goal/objective need to be updated, please input content in its entirety</li>
+        <li>When left blank, the goal/objective will be none.</li>
+        <li style='font-weight: bold'>If what was originally "none" still is "none", please leave it blank</li>
+    </ul>
+    <table>
+        <tbody>
+            <form class="doc-form" action="/update/<ClientID>" method="post">
+                <div class="form-group">
+                    <input required autocomplete="off" class="form-control form-control_short" name="update" placeholder="Today's Day (integer)"" type="text">
+                </div>
+                <div class="form-group">
+                    <input required autocomplete="off" class="form-control form-control_short" name="update" placeholder="Month (integer)" type="text">
+                </div>
+                <div class="form-group">
+                    <input required autocomplete="off" class="form-control form-control_short" name="update" placeholder="Year (4 digits)"" type="text">
+                </div>
+                {% for i in range(block1 | length) %}
+                <tr>
+                    <td class="goals-and-objectives">{{ block1[i] }}</td>
+                </tr>
+                <tr>
+                    <td>
+                        {% if block1[i] is number %}
+                        <input name='update' value='{{ block1[i] }}' id='Nul'>
+                        {% else %}
+                        <label class='titles'>{{ block2[i] }}</label>
+                        <div class="form-group">
+                            <input autocomplete="off" class="form-control
+                            form-control_long" id='update' name="update" type="text">
+                        </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

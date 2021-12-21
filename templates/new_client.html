@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Client
+{% endblock %}
+
+{% block main %}
+<form action="/new_client" method="post">
+    <div class="form-group">
+        <input required autocomplete="off" autofocus class="form-control form-control_long" name="Client_Name" placeholder="Client Name (eg: Joe S)" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Caregiver Email" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Client Birthday (format: YYYY-MM-DD)" type="text">
+    </div>
+    <br>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Goal #1" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #1" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #2" type="text">
+    </div><div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #3" type="text">
+    </div>
+    <br>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Goal #2" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #1" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #2" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #3" type="text">
+    </div>
+    <br>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Goal #3" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #1" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #2" type="text">
+    </div>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control form-control_long" name="new" placeholder="Objective #3" type="text">
+    </div>
+    <div class="form-group">
+        <input required autocomplete="off" class="form-control form-control_short" name="new" placeholder="Today's Day (integer)" type="text">
+    </div>
+    <div class="form-group">
+        <input required autocomplete="off" class="form-control form-control_short" name="new" placeholder="Month (integer)" type="text">
+    </div>
+    <div class="form-group">
+        <input required autocomplete="off" class="form-control form-control_short" name="new" placeholder="Year (4 digits)"" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

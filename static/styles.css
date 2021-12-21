@@ -1,0 +1,95 @@
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand
+{
+    color:rgb(236, 184, 105);
+    font-family: 'Dongle', sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+}
+.color {
+    color:rgb(73, 73, 71);
+}
+main .form-control_short
+{
+    /* Center form controls */
+    display: inline-block;
+
+    /* Override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main .form-control_long {
+    display: inline-block;
+    width: 90%;
+    height: 40px;
+    border: 2px solid gray;
+}
+main .form-control_block {
+    display: inline-block;
+    width: 90%;
+    height: 200px;
+    border: 2px solid gray;
+}
+main
+{
+    /* Scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* Center contents */
+    text-align: center;
+}
+
+main .goals-and-objectives {
+    text-align: left;
+}
+
+main img
+{
+    /* Constrain images on small screens */
+    max-width: 100%;
+}
+
+main .notice {
+    text-align: left;
+    font-size: 30px;
+}
+main .titles {
+    text-align: left;
+}
+
+
+.section {
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+}
+
+.section:hover {
+    background-color: #f5f5f5;
+    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+table th,
+table td {
+    padding-bottom: 1rem;
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+    padding-top: 0.5rem;
+    vertical-align: middle;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgb(179, 208, 255, 0.3)
+}
+
+#Nul {
+    display: none;
+}
