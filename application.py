@@ -170,7 +170,7 @@ def email():
         #pull all the caregiver emails and client names out based on the therapist and the eligible clients who got documented that month/year
         contacts = mycursor.fetchall()
         #if the client doesn't have caregiver_email, skip this client
-        contacts = [i for i in contacts if i[0] !='']
+        contacts = [i for i in contacts if i[0] !='' or None]
         for contact in contacts:
             receiver = contact[0]
             Client_Name = contact[1]
@@ -243,20 +243,24 @@ def update_records(ClientID):
     if request.method == "GET":
         mycursor.execute('SELECT Goal1, Ob1, Ob2, Ob3, Goal2, Ob4, Ob5, Ob6, Goal3, Ob7, Ob8, Ob9, ClientInfo_id FROM Notes WHERE id IN (SELECT MAX(id) FROM Notes WHERE type = "goals" AND ClientInfo_id = %s)', (ClientID,))
         allgoals = mycursor.fetchall()[0]
+        allgoalsID = ['Goal 1 ORI', 'Objective 1 ORI', 'Objective 2 ORI', 'Objective 3 ORI', 'Goal 2 ORI', 'Objective 4 ORI', 'Objective 5 ORI', 'Objective 6 ORI', 'Goal 3 ORI', 'Objective 7 ORI', 'Objective 8 ORI', 'Objective 9 ORI', 'Info ORI']
         titles = ['Goal 1', 'Objective 1', 'Objective 2', 'Objective 3', 'Goal 2', 'Objective 1', 'Objective 2', 'Objective 3', 'Goal 3', 'Objective 1', 'Objective 2', 'Objective 3']
-        return render_template('update_records.html', block1 = allgoals, block2=titles)
+        htmlLabels = ['Goal 1', 'Objective 1', 'Objective 2', 'Objective 3', 'Goal 2', 'Objective 4', 'Objective 5', 'Objective 6', 'Goal 3', 'Objective 7', 'Objective 8', 'Objective 9', 'Info']
+        inputIds = ['Goal 1 input', 'Objective 1 input', 'Objective 2 input', 'Objective 3 input', 'Goal 2 input', 'Objective 4 input', 'Objective 5 input', 'Objective 6 input', 'Goal 3 input', 'Objective 7 input', 'Objective 8 input', 'Objective 9 input', 'Info input']
+        return render_template('update_records.html', allgoals = allgoals, titles=titles, htmlLabels = htmlLabels, inputIds = inputIds, allgoalsID = allgoalsID)
     else:
         update_list = request.form.getlist('update')
+        print("yo look at me", len(update_list))
         # error checking making sure there is date input
         if '' in update_list[:3]:
             return apology("Must provide today's date")
         for i in range(len(update_list)):
-            if update_list[i] == '':
+            if update_list[i] == 'None' or '':
                 update_list[i] = None
         update_list[-1] = int(update_list[-1])
         update_list.append('goals')
         update_list=tuple(update_list)
-        mycursor.execute("INSERT INTO Notes (DocDate, DocMonth,DocYear, Goal1, Ob1, Ob2, Ob3, Goal2, Ob4, Ob5, Ob6, Goal3, Ob7, Ob8, Ob9, ClientInfo_id, type) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", update_list)
+        mycursor.execute("INSERT INTO Notes (DocDate, DocMonth, DocYear, Goal1, Ob1, Ob2, Ob3, Goal2, Ob4, Ob5, Ob6, Goal3, Ob7, Ob8, Ob9, ClientInfo_id, type) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", update_list)
         db.commit()
         return redirect('/')
 

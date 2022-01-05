@@ -48,6 +48,7 @@ main
 
 main .goals-and-objectives {
     text-align: left;
+    width: 100vw;
 }
 
 main img
@@ -91,5 +92,45 @@ tbody tr:nth-of-type(odd) {
 }
 
 #Nul {
-    display: none;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
 }
+
+.invisible-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.visible-checkbox {
+    height: 20px;
+    width: 20px;
+    display: inline-flex;
+    border: 1.5px solid navy;
+    vertical-align: middle;
+    border-radius: 25%;
+}
+
+.visible-checkbox::after {
+    height: 80%;
+    width: 80%;
+    opacity: 0;
+    background-color: skyblue;
+    content: "";
+    border-radius: 25%;
+    align-self: center;
+    margin: auto;
+}
+
+.checkbox-text {
+    margin-left: 5px;
+}
+
+.invisible-checkbox:checked + .visible-checkbox::after {
+    opacity: 1;
+}
+
+
