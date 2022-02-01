@@ -170,7 +170,7 @@ def email():
         #pull all the caregiver emails and client names out based on the therapist and the eligible clients who got documented that month/year
         contacts = mycursor.fetchall()
         #if the client doesn't have caregiver_email, skip this client
-        contacts = [i for i in contacts if i[0] !='' or None]
+        contacts = [i for i in contacts if i[0] !='' and i[0] is not None and i[0] != "None" and i[0] != "<None>"]
         for contact in contacts:
             receiver = contact[0]
             Client_Name = contact[1]
@@ -250,7 +250,6 @@ def update_records(ClientID):
         return render_template('update_records.html', allgoals = allgoals, titles=titles, htmlLabels = htmlLabels, inputIds = inputIds, allgoalsID = allgoalsID)
     else:
         update_list = request.form.getlist('update')
-        print("yo look at me", len(update_list))
         # error checking making sure there is date input
         if '' in update_list[:3]:
             return apology("Must provide today's date")
