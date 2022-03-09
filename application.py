@@ -33,6 +33,7 @@ db = mysql.connector.connect(
     user=os.environ.get('DB_USER'),
     passwd=os.environ.get('DB_PASS'),
 )
+
 # using documentation as the database and establish connection between mycursor and db
 mycursor = db.cursor()
 mycursor.execute("USE documentation")
