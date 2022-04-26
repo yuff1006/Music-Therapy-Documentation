@@ -10,7 +10,6 @@ from report import PDF
 import smtplib
 from email.message import EmailMessage
 
-
 app=Flask(__name__)
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
